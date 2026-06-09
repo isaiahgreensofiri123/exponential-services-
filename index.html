@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMS | Exponential Microservices - Premium Web Dev, Assignment & Design Solutions</title>
+    
+    <!-- Meta SEO Tags -->
+    <meta name="description" content="EMS (Exponential Microservices) provides elite digital services including custom web development, academic & coding assignment solutions, final-year project work, and modern graphic design. Fast, scaling, and reliable.">
+    <meta name="keywords" content="web development, assignment solutions, project work, graphic design, content writing, coding assignments, capstone projects, EMS, Exponential Microservices, booking">
+    <meta name="author" content="Exponential Microservices">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="EMS | Exponential Microservices - Scaling Digital Solutions">
+    <meta property="og:description" content="Elite web development, assignment solutions, final-year project work, and professional graphic design. Contact us today at 07062155519.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://exponential-microservices.com">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas/Effects -->
+    <div class="ambient-glow"></div>
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="header-nav">
+        <div class="header-container">
+            <a href="#" class="logo-link" id="logo-branding">
+                <div class="logo-icon">
+                    <span class="base-logo">e</span><span class="exponent-logo">x</span>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-name">EMS</span>
+                    <span class="tagline-mini">Exponential Microservices</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="nav-menu" id="nav-desktop">
+                <a href="#hero" class="nav-item">Home</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#estimator" class="nav-item">Price Estimator</a>
+                <a href="#why-us" class="nav-item">Why EMS</a>
+                <a href="#testimonials" class="nav-item">Reviews</a>
+            </nav>
+
+            <div class="nav-cta-wrapper">
+                <a href="tel:07062155519" class="phone-link-header" id="phone-header-btn">
+                    <svg class="phone-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>07062155519</span>
+                </a>
+                <button class="btn-cta btn-glow" id="cta-book-header" onclick="openBookingModal('General Booking')">Book Service</button>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobile-toggle-btn" aria-label="Toggle Menu">
+                <div class="hamburger-bar"></div>
+                <div class="hamburger-bar"></div>
+                <div class="hamburger-bar"></div>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Drawer -->
+        <div class="mobile-nav-drawer" id="mobile-drawer">
+            <nav class="mobile-nav-links">
+                <a href="#hero" class="mobile-nav-item" onclick="toggleMobileMenu()">Home</a>
+                <a href="#services" class="mobile-nav-item" onclick="toggleMobileMenu()">Services</a>
+                <a href="#estimator" class="mobile-nav-item" onclick="toggleMobileMenu()">Price Estimator</a>
+                <a href="#why-us" class="mobile-nav-item" onclick="toggleMobileMenu()">Why EMS</a>
+                <a href="#testimonials" class="mobile-nav-item" onclick="toggleMobileMenu()">Reviews</a>
+            </nav>
+            <div class="mobile-drawer-footer">
+                <a href="tel:07062155519" class="phone-link-drawer">
+                    <span>Call: 07062155519</span>
+                </a>
+                <button class="btn-cta btn-glow w-full" onclick="toggleMobileMenu(); openBookingModal('General Booking')">Book Service</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge-hero animate-fade-in">
+                    <span class="badge-dot"></span>
+                    <span>Micro-services. Macro-impact.</span>
+                </div>
+                <h1 class="hero-title animate-title">
+                    Scaling Your Digital Vision <br>
+                    <span class="gradient-text">Exponentially</span>
+                </h1>
+                <p class="hero-subtitle animate-subtitle">
+                    EMS provides expert solutions engineered for speed and reliability. From custom full-stack web development and final-year project work to assignments and stunning graphic design, we turn your ideas into functional success.
+                </p>
+                <div class="hero-actions animate-actions">
+                    <a href="#services" class="btn-cta btn-glow" id="hero-primary-cta">Explore Services</a>
+                    <a href="#estimator" class="btn-cta btn-outline" id="hero-secondary-cta">Get Instant Quote</a>
+                </div>
+            </div>
+            
+            <div class="hero-graphics animate-graphic">
+                <div class="hero-glass-card">
+                    <div class="card-window-header">
+                        <span class="dot red-dot"></span>
+                        <span class="dot yellow-dot"></span>
+                        <span class="dot green-dot"></span>
+                        <span class="window-title">EMS_Terminal.js</span>
+                    </div>
+                    <div class="card-window-content">
+                        <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">ems</span> = <span class="code-keyword">require</span>(<span class="code-string">'exponential-microservices'</span>);</code>
+                        <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">project</span> = <span class="code-variable">ems</span>.<span class="code-function">create</span>({</code>
+                        <code class="code-line indent-1"><span class="code-property">speed</span>: <span class="code-string">'exponential'</span>,</code>
+                        <code class="code-line indent-1"><span class="code-property">quality</span>: <span class="code-string">'premium'</span>,</code>
+                        <code class="code-line indent-1"><span class="code-property">support</span>: <span class="code-number">247</span></code>
+                        <code class="code-line">});</code>
+                        <code class="code-line"></code>
+                        <code class="code-line"><span class="code-comment">// Executing critical service modules...</span></code>
+                        <code class="code-line"><span class="code-variable">project</span>.<span class="code-function">deploy</span>([<span class="code-string">'webDev'</span>, <span class="code-string">'assignments'</span>, <span class="code-string">'graphicDesign'</span>]);</code>
+                        <code class="code-line"><span class="code-comment">// Output: SUCCESS. Ready for booking!</span></code>
+                        <code class="code-line"><span class="code-comment">// Booking Line: +2347062155519</span></code>
+                        <code class="code-line blinking-cursor">> _</code>
+                    </div>
+                </div>
+                <!-- Visual floating elements -->
+                <div class="floating-badge dev-badge">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    <span>Web Dev</span>
+                </div>
+                <div class="floating-badge design-badge">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"></path></svg>
+                    <span>Design</span>
+                </div>
+                <div class="floating-badge project-badge">
+                    <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    <span>Projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Premium Microservices</h2>
+                <p class="section-subtitle">We design and deliver highly focused solutions that resolve your tech, academic, and creative hurdles instantly.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1: Web Development -->
+                <div class="service-card" id="card-webdev">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper webdev-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                            <line x1="14" y1="4" x2="10" y2="20"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Web Development</h3>
+                    <p class="service-card-desc">
+                        Full-stack websites, high-performance landing pages, custom web dashboards, and secure e-commerce systems tailored for your personal brand or enterprise.
+                    </p>
+                    <ul class="service-features">
+                        <li>React, Next.js, and static HTML/CSS</li>
+                        <li>Responsive layouts (Mobile-first)</li>
+                        <li>Optimal SEO & Performance tuning</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Web Development')">Book Web Dev</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Web%20Development%20services." target="_blank" class="btn-card-direct-wa" aria-label="Book Web Development on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18-2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Assignment Solutions -->
+                <div class="service-card" id="card-assignments">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper assignment-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Assignment Solutions</h3>
+                    <p class="service-card-desc">
+                        Comprehensive academic, science, and coding assignment aid. Get fast, reliable, step-by-step verified solutions written by expert educators and tech majors.
+                    </p>
+                    <ul class="service-features">
+                        <li>Coding (Python, Java, C++, JS, SQL)</li>
+                        <li>Mathematics, Physics, and Engineering</li>
+                        <li>Detailed formatting and documentation</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Assignment Solutions')">Book Assignment Help</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Assignment%20Solutions." target="_blank" class="btn-card-direct-wa" aria-label="Book Assignment Solutions on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18-2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Project Work -->
+                <div class="service-card" id="card-projects">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper project-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Project Work</h3>
+                    <p class="service-card-desc">
+                        End-to-end management, creation, and deployment of complex capstone and final year projects. Complete software architectures, system integrations, and descriptive theses.
+                    </p>
+                    <ul class="service-features">
+                        <li>Undergraduate & Postgraduate Project Work</li>
+                        <li>Fully commented clean codebase & design docs</li>
+                        <li>Configuration instructions and video walkthroughs</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Project Work')">Book Project Work</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Project%20Work." target="_blank" class="btn-card-direct-wa" aria-label="Book Project Work on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18-2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 4: Graphic Design -->
+                <div class="service-card" id="card-graphics">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper graphics-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
+                            <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Graphic Design</h3>
+                    <p class="service-card-desc">
+                        Professional visual identities. Logos, vector illustration, branding style guides, high-fidelity UI/UX layouts, mockups, social media creatives, and print media layouts.
+                    </p>
+                    <ul class="service-features">
+                        <li>Figma UI/UX Mockups & Wireframing</li>
+                        <li>Branding & Modern Vector Logo Design</li>
+                        <li>High-Resolution Visual Assets</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Graphic Design')">Book Graphic Design</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Graphic%20Design%20services." target="_blank" class="btn-card-direct-wa" aria-label="Book Graphic Design on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18-2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Content & Copywriting -->
+                <div class="service-card" id="card-writing">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper writing-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Content & SEO</h3>
+                    <p class="service-card-desc">
+                        SEO copywriting, blog posts, high-conversion landing page copy, technical documentation, resume packages, and academic editing to improve readability and search indexing.
+                    </p>
+                    <ul class="service-features">
+                        <li>High-ranking SEO content plans</li>
+                        <li>Clean technical reports and whitepapers</li>
+                        <li>Conversion-focused digital copies</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Content & SEO')">Book Content Help</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Content%20and%20SEO%20services." target="_blank" class="btn-card-direct-wa" aria-label="Book Content and SEO on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18-2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Data & Custom Automation -->
+                <div class="service-card" id="card-automation">
+                    <div class="card-glow-layer"></div>
+                    <div class="service-icon-wrapper automation-gradient">
+                        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Data & Automation</h3>
+                    <p class="service-card-desc">
+                        Custom python scripts, automated web scrapers, data entry/cleanup databases, API integration bridges, and process automation tools constructed to cut your workflow in half.
+                    </p>
+                    <ul class="service-features">
+                        <li>Data Scraping (JSON, CSV, Excel)</li>
+                        <li>Automated API Integrations & Webhooks</li>
+                        <li>Workflow Optimization Scripts</li>
+                    </ul>
+                    <div class="card-footer-actions">
+                        <button class="btn-card-booking" onclick="openBookingModal('Data & Automation')">Book Data Help</button>
+                        <a href="https://wa.me/2347062155519?text=Hello%20EMS,%20I%20want%20to%20inquire%20about%20Data%20and%20Automation%20services." target="_blank" class="btn-card-direct-wa" aria-label="Book Data and Automation on WhatsApp">
+                            <svg class="wa-icon-svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.498 1.451 5.411 1.453 5.432 0 9.851-4.417 9.855-9.848.002-2.63-1.02-5.101-2.877-6.958C17.18 1.984 14.717 1.96 12.01 1.96c-5.436 0-9.856 4.418-9.86 9.85-.001 1.989.516 3.931 1.502 5.654l-.988 3.606 3.693-.97zM17.433 14.37c-.361-.18; 2.141-1.055-2.472-1.175-.332-.12-.573-.18-.814.18-.242.36-.935 1.175-1.146 1.415-.21.24-.422.27-.783.09-3.628-1.815-5.06-2.859-6.957-6.104-.325-.556.325-.516.93-1.723.106-.21.053-.39-.027-.57-.08-.18-.783-1.885-1.074-2.585-.283-.68-.57-.59-.783-.6-.2-.01-.43-.015-.662-.015-.233 0-.612.087-.932.435-.32.348-1.222 1.196-1.222 2.915 0 1.72 1.254 3.378 1.429 3.61.176.23 2.467 3.766 5.977 5.28 2.085.901 3.708 1.44 4.982 1.848 1.057.336 2.02.288 2.78.175.847-.125 2.14-.875 2.443-1.72.302-.845.302-1.57.21-1.72-.09-.15-.33-.24-.691-.42z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Price Estimator -->
+    <section class="estimator-section" id="estimator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Instant Calculation</span>
+                <h2 class="section-title">Project Price Estimator</h2>
+                <p class="section-subtitle">Select your requirements and get an instant, transparent estimate for your custom service.</p>
+            </div>
+
+            <div class="estimator-grid">
+                <!-- Inputs panel -->
+                <div class="estimator-card glass-card">
+                    <form id="estimator-form">
+                        <!-- Select Service -->
+                        <div class="form-group">
+                            <label for="est-service" class="form-label">Choose a Service</label>
+                            <select id="est-service" class="form-select" onchange="calculateEstimate()">
+                                <option value="webdev">Web Development</option>
+                                <option value="assignments">Assignment Solutions</option>
+                                <option value="projects">Project Work</option>
+                                <option value="graphics">Graphic Design</option>
+                                <option value="other">Other Microservices</option>
+                            </select>
+                        </div>
+
+                        <!-- Scope/Complexity Radio Group -->
+                        <div class="form-group">
+                            <label class="form-label">Project Complexity</label>
+                            <div class="radio-cards-wrapper">
+                                <label class="radio-card">
+                                    <input type="radio" name="complexity" value="basic" checked onclick="calculateEstimate()">
+                                    <span class="radio-card-content">
+                                        <span class="radio-card-title">Basic</span>
+                                        <span class="radio-card-desc">Standard template, simple task</span>
+                                    </span>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="complexity" value="medium" onclick="calculateEstimate()">
+                                    <span class="radio-card-content">
+                                        <span class="radio-card-title">Medium</span>
+                                        <span class="radio-card-desc">Custom details, moderate features</span>
+                                    </span>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="complexity" value="complex" onclick="calculateEstimate()">
+                                    <span class="radio-card-content">
+                                        <span class="radio-card-title">Complex</span>
+                                        <span class="radio-card-desc">Enterprise system, heavy algorithm</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Urgency Selector -->
+                        <div class="form-group">
+                            <label class="form-label">Required Delivery Speed</label>
+                            <div class="urgency-selector-wrapper">
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="standard" checked onclick="calculateEstimate()">
+                                    <span class="urgency-box">
+                                        <span class="urgency-title">Standard</span>
+                                        <span class="urgency-time">7 - 14 Days</span>
+                                    </span>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="express" onclick="calculateEstimate()">
+                                    <span class="urgency-box">
+                                        <span class="urgency-title">Express</span>
+                                        <span class="urgency-time">3 - 6 Days</span>
+                                    </span>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="super" onclick="calculateEstimate()">
+                                    <span class="urgency-box">
+                                        <span class="urgency-title">Urgent</span>
+                                        <span class="urgency-time">24 - 48 Hours</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Display panel -->
+                <div class="estimator-result-card glass-card">
+                    <div class="result-card-inner">
+                        <div class="estimation-badge">Estimate Generated</div>
+                        <h3 class="estimator-result-title">Estimated Investment</h3>
+                        
+                        <div class="price-display-wrapper">
+                            <span class="currency-symbol">₦</span>
+                            <span class="price-number" id="estimated-price">15,000</span>
+                            <span class="price-suffix">*</span>
+                        </div>
+                        
+                        <p class="estimator-disclaimer">
+                            *This estimate is calculated based on our standard rate multiplier. Exact pricing may vary after reviewing specific project criteria.
+                        </p>
+
+                        <div class="estimator-details-summary">
+                            <div class="summary-row">
+                                <span class="summary-label">Service:</span>
+                                <span class="summary-value" id="summary-service">Web Development</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Complexity:</span>
+                                <span class="summary-value" id="summary-complexity">Basic</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Timeline:</span>
+                                <span class="summary-value" id="summary-timeline">Standard (7-14 Days)</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-cta btn-glow w-full" id="cta-book-estimate" onclick="bookWithEstimate()">
+                            Book With This Estimate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose EMS Section -->
+    <section class="why-us-section" id="why-us">
+        <div class="container">
+            <div class="why-us-grid">
+                <div class="why-us-content">
+                    <span class="section-tag">Our Performance Indicators</span>
+                    <h2 class="section-title text-left">Why Choose Exponential Microservices?</h2>
+                    <p class="section-subtitle text-left">We don't just complete projects; we optimize them. Our processes are tuned to scale your success metrics exponentially.</p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Guaranteed Accurate Solutions</h4>
+                                <p>We implement rigorous testing for all code and academic review checklist steps before project sign-off.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Exponential Speed & Execution</h4>
+                                <p>With structured design modularity, we ship assignment sheets and code bases ahead of schedule.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>24/7 Client Direct Support Line</h4>
+                                <p>Direct communication via WhatsApp or Call with the developer or educator handling your project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="why-us-stats">
+                    <div class="stats-glass-card">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number">99%</span>
+                        </div>
+                        <div class="stat-label">On-Time Delivery Rate</div>
+                    </div>
+                    <div class="stats-glass-card">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number">450+</span>
+                        </div>
+                        <div class="stat-label">Projects Completed Successfully</div>
+                    </div>
+                    <div class="stats-glass-card">
+                        <div class="stat-number-wrapper">
+                            <span class="stat-number">4.9/5</span>
+                        </div>
+                        <div class="stat-label">Client Satisfaction Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Client Feedback</span>
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real feedback from students, businesses, and creators who scaled their operations with EMS.</p>
+            </div>
+
+            <!-- Auto-scrolling Slider wrapper -->
+            <div class="testimonials-slider-container">
+                <div class="testimonials-track" id="testimonials-track">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "EMS developed our e-commerce landing page in record time. The code is fast and clean, and our sales have literally scaled since launch!"
+                        </p>
+                        <div class="client-profile">
+                            <div class="client-avatar bg-gradient-pink">O</div>
+                            <div class="client-details">
+                                <span class="client-name">Olaoluwa D.</span>
+                                <span class="client-role">Founder, D-Apparels</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "The assignment solutions were extremely detailed. They didn't just give the answers; they explained the mechanics of the algorithms."
+                        </p>
+                        <div class="client-profile">
+                            <div class="client-avatar bg-gradient-blue">C</div>
+                            <div class="client-details">
+                                <span class="client-name">Chinedu E.</span>
+                                <span class="client-role">Computer Science Student</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "My final year engineering project was a massive success. EMS handled both the software UI and detailed system thesis perfectly."
+                        </p>
+                        <div class="client-profile">
+                            <div class="client-avatar bg-gradient-purple">A</div>
+                            <div class="client-details">
+                                <span class="client-name">Aminat Y.</span>
+                                <span class="client-role">Electrical Eng. Graduate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="testimonial-card glass-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-quote">
+                            "Stunning graphic assets and social layouts! EMS captured our brand voice and created clean vectors that we use everywhere."
+                        </p>
+                        <div class="client-profile">
+                            <div class="client-avatar bg-gradient-orange">K</div>
+                            <div class="client-details">
+                                <span class="client-name">Kevin M.</span>
+                                <span class="client-role">Marketing Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="btn-slider-arrow" id="prev-slide-btn" onclick="slideReviews(-1)" aria-label="Previous Testimonial">❮</button>
+                    <button class="btn-slider-arrow" id="next-slide-btn" onclick="slideReviews(1)" aria-label="Next Testimonial">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <div class="logo-icon-footer">
+                    <span class="base-logo">e</span><span class="exponent-logo">x</span>
+                </div>
+                <h3 class="footer-brand-name">EMS</h3>
+                <p class="footer-desc">
+                    Scaling digital solutions with exponential efficiency. Web Development, Project Work, Assignments, and Graphics delivered by professional engineers.
+                </p>
+                <div class="booking-footer-btn-wrapper">
+                    <a href="https://wa.me/2347062155519" target="_blank" class="footer-cta-link wa-accent-btn">
+                        <span>Book on WhatsApp</span>
+                    </a>
+                    <a href="tel:07062155519" class="footer-cta-link call-accent-btn">
+                        <span>Call 07062155519</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 class="footer-title">Our Offerings</h4>
+                <ul class="footer-links">
+                    <li><a href="#services" onclick="highlightCard('card-webdev')">Web Development</a></li>
+                    <li><a href="#services" onclick="highlightCard('card-assignments')">Assignment Help</a></li>
+                    <li><a href="#services" onclick="highlightCard('card-projects')">Project Execution</a></li>
+                    <li><a href="#services" onclick="highlightCard('card-graphics')">Graphic Design</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4 class="footer-title">Company Info</h4>
+                <ul class="footer-links">
+                    <li><a href="#why-us">About Us</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#estimator">Rate Cards</a></li>
+                    <li><a href="tel:07062155519">Support Line</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p class="copyright-text">&copy; 2026 Exponential Microservices (EMS). All rights reserved.</p>
+                <p class="booking-emphasis">Direct Bookings & Support: <a href="tel:07062155519">07062155519</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Booking Modal -->
+    <div class="booking-modal-overlay" id="booking-modal">
+        <div class="booking-modal glass-card">
+            <button class="modal-close-btn" onclick="closeBookingModal()" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <h3 class="modal-title">Book a Service</h3>
+                <p class="modal-subtitle">Tell us about your project requirements to initiate your booking instantly.</p>
+            </div>
+            
+            <form id="modal-booking-form" onsubmit="submitBookingForm(event)">
+                <div class="form-group">
+                    <label for="book-name" class="form-label">Your Name</label>
+                    <input type="text" id="book-name" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-service" class="form-label">Selected Service</label>
+                    <select id="book-service" class="form-select">
+                        <option value="Web Development">Web Development</option>
+                        <option value="Assignment Solutions">Assignment Solutions</option>
+                        <option value="Project Work">Project Work</option>
+                        <option value="Graphic Design">Graphic Design</option>
+                        <option value="Content & SEO">Content & SEO</option>
+                        <option value="Data & Automation">Data & Automation</option>
+                        <option value="General Booking">General Booking / Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="book-urgency" class="form-label">Urgency</label>
+                        <select id="book-urgency" class="form-select">
+                            <option value="Standard (7-14 days)">Standard (7-14 days)</option>
+                            <option value="Express (3-6 days)">Express (3-6 days)</option>
+                            <option value="Urgent (24-48 hours)">Urgent (24-48 hours)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-phone" class="form-label">Your WhatsApp Number</label>
+                        <input type="tel" id="book-phone" class="form-input" placeholder="e.g. 08012345678" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="book-details" class="form-label">Project Instructions / Context</label>
+                    <textarea id="book-details" class="form-textarea" placeholder="Provide instructions, guidelines, syllabus link, or details here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-cta btn-glow w-full" id="submit-booking-btn">
+                    Complete Booking on WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main JS Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
