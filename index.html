@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMS | Exponential Microservices - Premium Web Dev, Assignment & Design Solutions</title>
-    
+
     <!-- Meta SEO Tags -->
     <meta name="description" content="EMS (Exponential Microservices) provides elite digital services including custom web development, academic & coding assignment solutions, final-year project work, and modern graphic design. Fast, scaling, and reliable.">
     <meta name="keywords" content="web development, assignment solutions, project work, graphic design, content writing, coding assignments, capstone projects, EMS, Exponential Microservices, booking">
     <meta name="author" content="Exponential Microservices">
-    
+
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="EMS | Exponential Microservices - Scaling Digital Solutions">
     <meta property="og:description" content="Elite web development, assignment solutions, final-year project work, and professional graphic design. Contact us today at 07062155519.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://exponential-microservices.com">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Main Style Sheet -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -109,30 +109,130 @@
                     <a href="#estimator" class="btn-cta btn-outline" id="hero-secondary-cta">Get Instant Quote</a>
                 </div>
             </div>
-            
+
+            <!-- Hero Slider: rotating showcase of each service -->
             <div class="hero-graphics animate-graphic">
-                <div class="hero-glass-card">
-                    <div class="card-window-header">
-                        <span class="dot red-dot"></span>
-                        <span class="dot yellow-dot"></span>
-                        <span class="dot green-dot"></span>
-                        <span class="window-title">EMS_Terminal.js</span>
+                <div class="hero-slider" id="hero-slider">
+                    <div class="hero-slider-track" id="hero-slider-track">
+
+                        <!-- Slide 1: Web Development (terminal mockup) -->
+                        <div class="hero-slide">
+                            <div class="hero-glass-card">
+                                <div class="card-window-header">
+                                    <span class="dot red-dot"></span>
+                                    <span class="dot yellow-dot"></span>
+                                    <span class="dot green-dot"></span>
+                                    <span class="window-title">EMS_Terminal.js</span>
+                                </div>
+                                <div class="card-window-content">
+                                    <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">ems</span> = <span class="code-keyword">require</span>(<span class="code-string">'exponential-microservices'</span>);</code>
+                                    <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">project</span> = <span class="code-variable">ems</span>.<span class="code-function">create</span>({</code>
+                                    <code class="code-line indent-1"><span class="code-property">speed</span>: <span class="code-string">'exponential'</span>,</code>
+                                    <code class="code-line indent-1"><span class="code-property">quality</span>: <span class="code-string">'premium'</span>,</code>
+                                    <code class="code-line indent-1"><span class="code-property">support</span>: <span class="code-number">247</span></code>
+                                    <code class="code-line">});</code>
+                                    <code class="code-line"></code>
+                                    <code class="code-line"><span class="code-comment">// Executing critical service modules...</span></code>
+                                    <code class="code-line"><span class="code-variable">project</span>.<span class="code-function">deploy</span>([<span class="code-string">'webDev'</span>, <span class="code-string">'assignments'</span>, <span class="code-string">'graphicDesign'</span>]);</code>
+                                    <code class="code-line"><span class="code-comment">// Output: SUCCESS. Ready for booking!</span></code>
+                                    <code class="code-line"><span class="code-comment">// Booking Line: +2347062155519</span></code>
+                                    <code class="code-line blinking-cursor">> _</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Assignment Solutions (worksheet mockup) -->
+                        <div class="hero-slide">
+                            <div class="hero-glass-card">
+                                <div class="card-window-header">
+                                    <span class="dot red-dot"></span>
+                                    <span class="dot yellow-dot"></span>
+                                    <span class="dot green-dot"></span>
+                                    <span class="window-title">Assignment_Solution.pdf</span>
+                                </div>
+                                <div class="card-window-content slide-worksheet">
+                                    <div class="ws-row"><span class="ws-q">Q1.</span><span class="ws-bar ws-bar--long"></span></div>
+                                    <div class="ws-row ws-sub"><span class="ws-bar ws-bar--mid"></span></div>
+                                    <div class="ws-row ws-sub"><span class="ws-bar ws-bar--short"></span></div>
+                                    <div class="ws-check">✔ Verified correct, step-by-step</div>
+                                    <div class="ws-row"><span class="ws-q">Q2.</span><span class="ws-bar ws-bar--long"></span></div>
+                                    <div class="ws-row ws-sub"><span class="ws-bar ws-bar--mid"></span></div>
+                                    <div class="ws-check">✔ Verified correct, step-by-step</div>
+                                    <div class="ws-grade">Grade Projection: <strong>A</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Project Work (dashboard mockup) -->
+                        <div class="hero-slide">
+                            <div class="hero-glass-card">
+                                <div class="card-window-header">
+                                    <span class="dot red-dot"></span>
+                                    <span class="dot yellow-dot"></span>
+                                    <span class="dot green-dot"></span>
+                                    <span class="window-title">Final_Year_Project — Build Status</span>
+                                </div>
+                                <div class="card-window-content slide-dashboard">
+                                    <div class="dash-row">
+                                        <span>System Architecture</span><span class="dash-pill dash-pill--done">Complete</span>
+                                    </div>
+                                    <div class="dash-row">
+                                        <span>Codebase + Comments</span><span class="dash-pill dash-pill--done">Complete</span>
+                                    </div>
+                                    <div class="dash-row">
+                                        <span>Thesis Documentation</span><span class="dash-pill dash-pill--progress">In Review</span>
+                                    </div>
+                                    <div class="dash-bar-wrapper">
+                                        <div class="dash-bar-fill"></div>
+                                    </div>
+                                    <div class="dash-percent">92% Ready for Defense</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Graphic Design (palette / mockup) -->
+                        <div class="hero-slide">
+                            <div class="hero-glass-card">
+                                <div class="card-window-header">
+                                    <span class="dot red-dot"></span>
+                                    <span class="dot yellow-dot"></span>
+                                    <span class="dot green-dot"></span>
+                                    <span class="window-title">Brand_Identity.fig</span>
+                                </div>
+                                <div class="card-window-content slide-design">
+                                    <div class="swatch-row">
+                                        <span class="swatch" style="background:#388bfd"></span>
+                                        <span class="swatch" style="background:#58a6ff"></span>
+                                        <span class="swatch" style="background:#39d2c0"></span>
+                                        <span class="swatch" style="background:#a371f7"></span>
+                                        <span class="swatch" style="background:#f0f6fc"></span>
+                                    </div>
+                                    <div class="design-card-mock">
+                                        <div class="design-card-mock__logo"></div>
+                                        <div class="design-card-mock__lines">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                    </div>
+                                    <div class="design-tag">Logo · UI Kit · Style Guide</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="card-window-content">
-                        <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">ems</span> = <span class="code-keyword">require</span>(<span class="code-string">'exponential-microservices'</span>);</code>
-                        <code class="code-line"><span class="code-keyword">const</span> <span class="code-variable">project</span> = <span class="code-variable">ems</span>.<span class="code-function">create</span>({</code>
-                        <code class="code-line indent-1"><span class="code-property">speed</span>: <span class="code-string">'exponential'</span>,</code>
-                        <code class="code-line indent-1"><span class="code-property">quality</span>: <span class="code-string">'premium'</span>,</code>
-                        <code class="code-line indent-1"><span class="code-property">support</span>: <span class="code-number">247</span></code>
-                        <code class="code-line">});</code>
-                        <code class="code-line"></code>
-                        <code class="code-line"><span class="code-comment">// Executing critical service modules...</span></code>
-                        <code class="code-line"><span class="code-variable">project</span>.<span class="code-function">deploy</span>([<span class="code-string">'webDev'</span>, <span class="code-string">'assignments'</span>, <span class="code-string">'graphicDesign'</span>]);</code>
-                        <code class="code-line"><span class="code-comment">// Output: SUCCESS. Ready for booking!</span></code>
-                        <code class="code-line"><span class="code-comment">// Booking Line: +2347062155519</span></code>
-                        <code class="code-line blinking-cursor">> _</code>
+
+                    <!-- Slider dots -->
+                    <div class="hero-slider-dots" id="hero-slider-dots">
+                        <button class="hero-dot active" onclick="goToHeroSlide(0)" aria-label="Show Web Development slide"></button>
+                        <button class="hero-dot" onclick="goToHeroSlide(1)" aria-label="Show Assignment Solutions slide"></button>
+                        <button class="hero-dot" onclick="goToHeroSlide(2)" aria-label="Show Project Work slide"></button>
+                        <button class="hero-dot" onclick="goToHeroSlide(3)" aria-label="Show Graphic Design slide"></button>
                     </div>
+
+                    <!-- Slider arrows -->
+                    <button class="hero-slider-arrow hero-slider-arrow--prev" onclick="slideHero(-1)" aria-label="Previous slide">❮</button>
+                    <button class="hero-slider-arrow hero-slider-arrow--next" onclick="slideHero(1)" aria-label="Next slide">❯</button>
                 </div>
+
                 <!-- Visual floating elements -->
                 <div class="floating-badge dev-badge">
                     <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
@@ -425,13 +525,13 @@
                     <div class="result-card-inner">
                         <div class="estimation-badge">Estimate Generated</div>
                         <h3 class="estimator-result-title">Estimated Investment</h3>
-                        
+
                         <div class="price-display-wrapper">
                             <span class="currency-symbol">₦</span>
                             <span class="price-number" id="estimated-price">15,000</span>
                             <span class="price-suffix">*</span>
                         </div>
-                        
+
                         <p class="estimator-disclaimer">
                             *This estimate is calculated based on our standard rate multiplier. Exact pricing may vary after reviewing specific project criteria.
                         </p>
@@ -468,7 +568,7 @@
                     <span class="section-tag">Our Performance Indicators</span>
                     <h2 class="section-title text-left">Why Choose Exponential Microservices?</h2>
                     <p class="section-subtitle text-left">We don't just complete projects; we optimize them. Our processes are tuned to scale your success metrics exponentially.</p>
-                    
+
                     <div class="benefits-list">
                         <div class="benefit-item">
                             <div class="benefit-icon">
@@ -660,13 +760,13 @@
                 <h3 class="modal-title">Book a Service</h3>
                 <p class="modal-subtitle">Tell us about your project requirements to initiate your booking instantly.</p>
             </div>
-            
+
             <form id="modal-booking-form" onsubmit="submitBookingForm(event)">
                 <div class="form-group">
                     <label for="book-name" class="form-label">Your Name</label>
                     <input type="text" id="book-name" class="form-input" placeholder="Enter your full name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="book-service" class="form-label">Selected Service</label>
                     <select id="book-service" class="form-select">

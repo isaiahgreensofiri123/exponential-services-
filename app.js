@@ -1,251 +1,280 @@
 /* ==========================================================================
-   EMS - EXPONENTIAL MICROSERVICES CUSTOM JAVASCRIPT APPLICATION LOGIC
+   EMS - EXPONENTIAL MICROSERVICES — APPLICATION LOGIC
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Navigation & Event Listeners
     initNavigation();
+    initMobileMenu();
+    initBookingModal();
+    initHeroSlider();
     initTestimonialSlider();
-    calculateEstimate(); // Run initial calculation
+    initEstimator();
 });
 
 /* ==========================================================================
-   1. NAVIGATION HEADER ACTIONS
+   1. HEADER SCROLL STATE
    ========================================================================== */
 function initNavigation() {
     const header = document.getElementById('header-nav');
-    
-    // Morph header style on scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    if (!header) return;
+
+    const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ==========================================================================
+   2. MOBILE MENU
+   ========================================================================== */
+function initMobileMenu() {
+    const toggleBtn = document.getElementById('mobile-toggle-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    if (!toggleBtn || !drawer) return;
+
+    toggleBtn.setAttribute('aria-expanded', 'false');
+
+    toggleBtn.addEventListener('click', () => toggleMobileMenu());
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+            toggleMobileMenu(false);
+        }
+    });
+
+    // Close automatically if the viewport grows back to desktop size
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 860 && drawer.classList.contains('active')) {
+            toggleMobileMenu(false);
         }
     });
 }
 
-// Mobile drawer controls
-function toggleMobileMenu() {
+function toggleMobileMenu(forceState) {
     const toggleBtn = document.getElementById('mobile-toggle-btn');
     const drawer = document.getElementById('mobile-drawer');
-    
-    toggleBtn.classList.toggle('active');
-    drawer.classList.toggle('active');
+    if (!toggleBtn || !drawer) return;
+
+    const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !drawer.classList.contains('active');
+
+    toggleBtn.classList.toggle('active', shouldOpen);
+    drawer.classList.toggle('active', shouldOpen);
+    toggleBtn.setAttribute('aria-expanded', String(shouldOpen));
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
 }
 
 /* ==========================================================================
-   2. HIGHLIGHT SERVICE CARDS (From footer links)
+   3. HIGHLIGHT SERVICE CARDS (from footer links)
    ========================================================================== */
 function highlightCard(cardId) {
     const card = document.getElementById(cardId);
     if (!card) return;
-    
-    // Smooth scroll to card
+
     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-    // Add flashing highlight class
     card.classList.add('highlight');
-    
-    // Remove class after animation finishes
-    setTimeout(() => {
-        card.classList.remove('highlight');
-    }, 1500);
+    setTimeout(() => card.classList.remove('highlight'), 1500);
 }
 
 /* ==========================================================================
-   3. BOOKING MODAL ACTIONS
+   4. BOOKING MODAL
    ========================================================================== */
-const bookingModal = document.getElementById('booking-modal');
+function initBookingModal() {
+    const modal = document.getElementById('booking-modal');
+    const form = document.getElementById('modal-booking-form');
+    if (!modal) return;
+
+    // Close on overlay click (but not clicks inside the modal box)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeBookingModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeBookingModal();
+        }
+    });
+
+    if (form) form.addEventListener('submit', submitBookingForm);
+}
 
 function openBookingModal(defaultService = 'General Booking') {
-    bookingModal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Stop background scrolling
-    
-    // Set default value in dropdown if exists
+    const modal = document.getElementById('booking-modal');
+    if (!modal) return;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
     const select = document.getElementById('book-service');
     if (select) {
-        // Match string values in options
-        for (let option of select.options) {
-            if (option.value.toLowerCase() === defaultService.toLowerCase() || 
-                option.text.toLowerCase().includes(defaultService.toLowerCase())) {
-                select.value = option.value;
-                break;
-            }
-        }
+        const match = Array.from(select.options).find((opt) =>
+            opt.value.toLowerCase() === defaultService.toLowerCase() ||
+            opt.text.toLowerCase().includes(defaultService.toLowerCase())
+        );
+        if (match) select.value = match.value;
     }
+
+    const nameInput = document.getElementById('book-name');
+    if (nameInput) nameInput.focus();
 }
 
 function closeBookingModal() {
-    bookingModal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Re-enable scroll
+    const modal = document.getElementById('booking-modal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
-// Close modal when clicking outside the container
-bookingModal.addEventListener('click', (e) => {
-    if (e.target === bookingModal) {
-        closeBookingModal();
-    }
-});
-
 /* ==========================================================================
-   4. DYNAMIC PRICE ESTIMATOR
+   5. DYNAMIC PRICE ESTIMATOR
    ========================================================================== */
-// Service Base Prices matrix (in Nigerian Naira ₦)
-const basePrices = {
-    webdev: {
-        basic: 15000,
-        medium: 45000,
-        complex: 120000
-    },
-    assignments: {
-        basic: 3000,
-        medium: 8000,
-        complex: 20000
-    },
-    projects: {
-        basic: 25000,
-        medium: 6000, // wait let's make it 60000
-        mediumValue: 60000,
-        complex: 150000
-    },
-    graphics: {
-        basic: 5000,
-        medium: 12000,
-        complex: 30000
-    },
-    other: {
-        basic: 4000,
-        medium: 10000,
-        complex: 25000
-    }
+// Base prices in Nigerian Naira (₦) by service + complexity
+const BASE_PRICES = {
+    webdev:      { basic: 15000, medium: 45000,  complex: 120000 },
+    assignments: { basic: 3000,  medium: 8000,   complex: 20000  },
+    projects:    { basic: 25000, medium: 60000,  complex: 150000 },
+    graphics:    { basic: 5000,  medium: 12000,  complex: 30000  },
+    other:       { basic: 4000,  medium: 10000,  complex: 25000  },
 };
 
-// Urgency Speed Multipliers
-const urgencyMultipliers = {
-    standard: 1.0, // 7-14 Days
-    express: 1.3,  // 3-6 Days
-    super: 1.6     // 24-48 Hours
+// Delivery speed multipliers
+const URGENCY_MULTIPLIERS = {
+    standard: 1.0, // 7-14 days
+    express: 1.3,  // 3-6 days
+    super: 1.6,    // 24-48 hours
 };
 
-// Map values for presentation summaries
-const displayMappings = {
+const DISPLAY = {
     services: {
         webdev: 'Web Development',
         assignments: 'Assignment Solutions',
         projects: 'Project Work',
         graphics: 'Graphic Design',
-        other: 'Custom Microservice'
+        other: 'Custom Microservice',
     },
     complexities: {
         basic: 'Basic (Template / Low Complexity)',
         medium: 'Medium (Custom Features / Normal Complexity)',
-        complex: 'Complex (Full System / Custom Logic)'
+        complex: 'Complex (Full System / Custom Logic)',
     },
     timelines: {
         standard: 'Standard Speed (7 - 14 Days)',
         express: 'Express Speed (3 - 6 Days)',
-        super: 'Urgent Speed (24 - 48 Hours)'
-    }
+        super: 'Urgent Speed (24 - 48 Hours)',
+    },
 };
 
-let previousPrice = 15000;
+let currentPrice = BASE_PRICES.webdev.basic;
+let priceAnimationFrame = null;
 
-function calculateEstimate() {
-    const serviceVal = document.getElementById('est-service').value;
-    const complexityVal = document.querySelector('input[name="complexity"]:checked').value;
-    const urgencyVal = document.querySelector('input[name="urgency"]:checked').value;
-    
-    // Resolve base price
-    let base = 0;
-    if (serviceVal === 'projects' && complexityVal === 'medium') {
-        base = basePrices.projects.mediumValue; // Fix typo key safety
-    } else {
-        base = basePrices[serviceVal][complexityVal];
-    }
-    
-    const multiplier = urgencyMultipliers[urgencyVal];
-    const estimatedTotal = Math.round(base * multiplier);
-    
-    // Update summary text
-    document.getElementById('summary-service').innerText = displayMappings.services[serviceVal];
-    document.getElementById('summary-complexity').innerText = complexityVal.charAt(0).toUpperCase() + complexityVal.slice(1);
-    document.getElementById('summary-timeline').innerText = displayMappings.timelines[urgencyVal];
-    
-    // Animate price numbers
-    animatePriceCounter(previousPrice, estimatedTotal);
-    previousPrice = estimatedTotal;
+function initEstimator() {
+    const form = document.getElementById('estimator-form');
+    if (!form) return;
+
+    form.addEventListener('change', calculateEstimate);
+    calculateEstimate(); // initial render
 }
 
-// Price Count Animation
+function getEstimatorSelection() {
+    const serviceEl = document.getElementById('est-service');
+    const complexityEl = document.querySelector('input[name="complexity"]:checked');
+    const urgencyEl = document.querySelector('input[name="urgency"]:checked');
+
+    return {
+        service: serviceEl ? serviceEl.value : 'webdev',
+        complexity: complexityEl ? complexityEl.value : 'basic',
+        urgency: urgencyEl ? urgencyEl.value : 'standard',
+    };
+}
+
+function calculateEstimate() {
+    const { service, complexity, urgency } = getEstimatorSelection();
+
+    const base = BASE_PRICES[service]?.[complexity] ?? BASE_PRICES.other.basic;
+    const multiplier = URGENCY_MULTIPLIERS[urgency] ?? 1;
+    const total = Math.round(base * multiplier);
+
+    const summaryService = document.getElementById('summary-service');
+    const summaryComplexity = document.getElementById('summary-complexity');
+    const summaryTimeline = document.getElementById('summary-timeline');
+
+    if (summaryService) summaryService.textContent = DISPLAY.services[service];
+    if (summaryComplexity) summaryComplexity.textContent = complexity.charAt(0).toUpperCase() + complexity.slice(1);
+    if (summaryTimeline) summaryTimeline.textContent = DISPLAY.timelines[urgency];
+
+    animatePriceCounter(currentPrice, total);
+    currentPrice = total;
+}
+
 function animatePriceCounter(start, end) {
     const priceDisplay = document.getElementById('estimated-price');
-    const duration = 400; // ms
+    if (!priceDisplay) return;
+
+    if (priceAnimationFrame) cancelAnimationFrame(priceAnimationFrame);
+
+    const duration = 400;
     const startTime = performance.now();
-    
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
+
+    function tick(now) {
+        const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing out function
-        const ease = 1 - Math.pow(1 - progress, 3);
-        const currentVal = Math.round(start + (end - start) * ease);
-        
-        // Format with thousand separator
-        priceDisplay.innerText = currentVal.toLocaleString();
-        
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(start + (end - start) * eased);
+
+        priceDisplay.textContent = value.toLocaleString();
+
         if (progress < 1) {
-            requestAnimationFrame(update);
+            priceAnimationFrame = requestAnimationFrame(tick);
         }
     }
-    requestAnimationFrame(update);
+    priceAnimationFrame = requestAnimationFrame(tick);
 }
 
 /* ==========================================================================
-   5. WHATSAPP LINK GENERATORS & REDIRECTS
+   6. WHATSAPP BOOKING
    ========================================================================== */
-const bookingPhone = '2347062155519'; // Format: country-code without +
+const BOOKING_PHONE = '2347062155519'; // country code, no leading +
 
-// Book using Estimator parameters
+function openWhatsApp(message) {
+    const url = `https://wa.me/${BOOKING_PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener');
+}
+
+// Book using the estimator's current selection
 function bookWithEstimate() {
-    const serviceVal = document.getElementById('est-service').value;
-    const complexityVal = document.querySelector('input[name="complexity"]:checked').value;
-    const urgencyVal = document.querySelector('input[name="urgency"]:checked').value;
-    
-    const serviceText = displayMappings.services[serviceVal];
-    const complexityText = displayMappings.complexities[complexityVal];
-    const timelineText = displayMappings.timelines[urgencyVal];
-    const priceFormatted = previousPrice.toLocaleString();
-    
+    const { service, complexity, urgency } = getEstimatorSelection();
+    const priceFormatted = currentPrice.toLocaleString();
+
     const message = `Hello Exponential Microservices (EMS) team! 👋
-    
+
 I calculated a quote estimate on your website and would like to finalize booking this service:
 
-*Service:* ${serviceText}
-*Complexity:* ${complexityText}
-*Timeline:* ${timelineText}
+*Service:* ${DISPLAY.services[service]}
+*Complexity:* ${DISPLAY.complexities[complexity]}
+*Timeline:* ${DISPLAY.timelines[urgency]}
 *Estimated Investment:* ₦${priceFormatted}
 
 Please let me know how we can proceed with details and file transfers!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${bookingPhone}?text=${encodedMessage}`;
-    
-    window.open(waUrl, '_blank');
+    openWhatsApp(message);
 }
 
-// Book using Booking Modal Form
+// Book using the modal form
 function submitBookingForm(event) {
-    event.preventDefault(); // Stop form submission reloading page
-    
-    const name = document.getElementById('book-name').value;
+    event.preventDefault();
+
+    const name = document.getElementById('book-name').value.trim();
     const service = document.getElementById('book-service').value;
     const urgency = document.getElementById('book-urgency').value;
-    const phone = document.getElementById('book-phone').value;
-    const details = document.getElementById('book-details').value;
-    
+    const phone = document.getElementById('book-phone').value.trim();
+    const details = document.getElementById('book-details').value.trim();
+
     const message = `Hello Exponential Microservices (EMS) team! 👋
-    
+
 I want to book a microservice from the website portal. Here are my booking details:
 
 *Client Name:* ${name}
@@ -258,52 +287,144 @@ ${details}
 
 Looking forward to your swift response!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${bookingPhone}?text=${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(waUrl, '_blank');
-    
-    // Cleanup form and close modal
-    document.getElementById('modal-booking-form').reset();
+    openWhatsApp(message);
+
+    event.target.reset();
     closeBookingModal();
 }
 
 /* ==========================================================================
-   6. TESTIMONIAL SLIDER CAROUSEL
+   7. HERO SLIDER (rotates through the four service showcases)
    ========================================================================== */
+const HERO_AUTO_SLIDE_MS = 5000;
+let heroSlideIndex = 0;
+let heroSlideInterval = null;
+let heroTouchStartX = 0;
+
+function initHeroSlider() {
+    const track = document.getElementById('hero-slider-track');
+    const slider = document.getElementById('hero-slider');
+    if (!track || track.children.length <= 1) return;
+
+    startHeroAutoSlide();
+
+    if (slider) {
+        slider.addEventListener('mouseenter', stopHeroAutoSlide);
+        slider.addEventListener('mouseleave', startHeroAutoSlide);
+
+        slider.addEventListener('touchstart', (e) => {
+            heroTouchStartX = e.touches[0].clientX;
+            stopHeroAutoSlide();
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+            const deltaX = e.changedTouches[0].clientX - heroTouchStartX;
+            if (Math.abs(deltaX) > 40) {
+                slideHero(deltaX < 0 ? 1 : -1);
+            }
+            setTimeout(startHeroAutoSlide, HERO_AUTO_SLIDE_MS);
+        }, { passive: true });
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopHeroAutoSlide();
+        } else {
+            startHeroAutoSlide();
+        }
+    });
+}
+
+function startHeroAutoSlide() {
+    stopHeroAutoSlide();
+    heroSlideInterval = setInterval(() => slideHero(1), HERO_AUTO_SLIDE_MS);
+}
+
+function stopHeroAutoSlide() {
+    if (heroSlideInterval) {
+        clearInterval(heroSlideInterval);
+        heroSlideInterval = null;
+    }
+}
+
+function renderHeroSlide() {
+    const track = document.getElementById('hero-slider-track');
+    if (!track) return;
+
+    track.style.transform = `translateX(${-heroSlideIndex * 100}%)`;
+
+    document.querySelectorAll('.hero-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === heroSlideIndex);
+    });
+}
+
+function slideHero(direction) {
+    const track = document.getElementById('hero-slider-track');
+    if (!track) return;
+
+    const total = track.children.length;
+    heroSlideIndex = (heroSlideIndex + direction + total) % total;
+    renderHeroSlide();
+}
+
+function goToHeroSlide(index) {
+    heroSlideIndex = index;
+    renderHeroSlide();
+    stopHeroAutoSlide();
+    startHeroAutoSlide();
+}
+
+/* ==========================================================================
+   8. TESTIMONIAL SLIDER
+   ========================================================================== */
+const AUTO_SLIDE_INTERVAL_MS = 6000;
 let currentSlide = 0;
-let slideInterval;
+let slideInterval = null;
 
 function initTestimonialSlider() {
     const track = document.getElementById('testimonials-track');
-    const slides = track.children;
-    
-    if (slides.length <= 1) return;
-    
-    // Auto slide timer
-    startAutoSlide();
-    
-    // Pause auto-sliding on hover
     const container = document.querySelector('.testimonials-slider-container');
-    container.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    container.addEventListener('mouseleave', () => startAutoSlide());
+    if (!track || track.children.length <= 1) return;
+
+    startAutoSlide();
+
+    if (container) {
+        container.addEventListener('mouseenter', stopAutoSlide);
+        container.addEventListener('mouseleave', startAutoSlide);
+        // Pause on touch for mobile users actively swiping/reading
+        container.addEventListener('touchstart', stopAutoSlide, { passive: true });
+        container.addEventListener('touchend', () => {
+            setTimeout(startAutoSlide, AUTO_SLIDE_INTERVAL_MS);
+        }, { passive: true });
+    }
+
+    // Pause when the tab isn't visible to avoid jank on return
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoSlide();
+        } else {
+            startAutoSlide();
+        }
+    });
 }
 
 function startAutoSlide() {
-    slideInterval = setInterval(() => {
-        slideReviews(1);
-    }, 6000);
+    stopAutoSlide();
+    slideInterval = setInterval(() => slideReviews(1), AUTO_SLIDE_INTERVAL_MS);
+}
+
+function stopAutoSlide() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = null;
+    }
 }
 
 function slideReviews(direction) {
     const track = document.getElementById('testimonials-track');
-    const slides = track.children;
-    const totalSlides = slides.length;
-    
+    if (!track) return;
+
+    const totalSlides = track.children.length;
     currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    
-    // Apply sliding transform offset
-    const offset = -currentSlide * 100;
-    track.style.transform = `translateX(${offset}%)`;
+    track.style.transform = `translateX(${-currentSlide * 100}%)`;
 }
